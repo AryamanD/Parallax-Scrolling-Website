@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Parallax Scrolling</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            position: sticky;
+            background-color: #333;
+            padding: 20px;
+            text-align: center;
+            top: 0;
+            z-index: 9999;
+        }
+
+        h1 {
+            color: #fff;
+            margin: 0;
+        }
+        .navbar {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            margin-top: 5px;
+            transition: top 0.3s;
+        }
+        .show {
+            transform: translateY(0);
+            transition: transform 0.3s ease-in-out;
+        }
+        .navbar li {
+            margin-right: 20px;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+        }
+
+        .navbar button {
+            color: #fff;
+            text-decoration: none;
+            padding: 2px 15px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .navbar button:hover {
+            transform: scale(1.2);
+        }
+
+        .parallax {
+            height: 120vh;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+
+        .parallax-heading {
+            position: absolute;
+            top: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight:bold;
+            font-size:25px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            color: #000000;
+            opacity: 0;
+            animation: fadeInOut 10s ease-in-out infinite;
+        }
+        .parallax-heading2 {
+            position: absolute;
+            top: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight:bold;
+            font-size:25px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            color: #ffffff;
+            opacity: 0;
+            animation: fadeInOut 10s ease-in-out infinite;
+        }
+        .parallax-heading3 {
+            position: absolute;
+            top: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight:bold;
+            font-size:25px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            color: #000000;
+            background-color:white;
+            opacity: 0;
+            animation: fadeInOut 10s ease-in-out infinite;
+        }
+        @keyframes fadeInOut {
+            0% { opacity: 0; }
+            25% { opacity: 1; }
+            75% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .parallax-text {
+            position: absolute;
+            font-weight:bold;
+            font-size:25px;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            Top : 58%;
+            Left : 16%;
+            text-align: left;
+            color: #fff;
+            width : 100%;
+        }
+        .parallax-text2 {
+            position: absolute;
+            font-weight:bold;
+            font-size:25px;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            Top : 65%;
+            Left : -10%;
+            text-align: left;
+            color: #fff;
+            width : 100%;
+        }
+        .parallax-text3 {
+            position: absolute;
+            font-weight:bold;
+            font-size:25px;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            Top : 70%;
+            Left : -17%;
+            text-align: left;
+            color: #fff;
+            width : 133%;
+        }
+        .parallax-text4 {
+            position: absolute;
+            font-weight:bold;
+            font-size:25px;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color:black;
+            background-color:black;
+            Top : 70%;
+            Left : -14%;
+            text-align: left;
+            width : 100%;
+        }
+        .parallax-text5 {
+            position: absolute;
+            font-weight: bold;
+            font-size: 25px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            Top: 70%;
+            Left: 16%;
+            text-align: left;
+            color: #fff;
+            width: 100%;
+        }
+        .parallax-text9 {
+            position: absolute;
+            font-weight: bold;
+            font-size: 25px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            Top: 51%;
+            Left: -6%;
+            text-align: left;
+            color: #fff;
+            width: 60%;
+        }
+
+        .parallax-text7{
+            position: absolute;
+            font-weight: bold;
+            font-size: 25px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            Top: 44%;
+            Left: -6%;
+            text-align: left;
+            color: #fff;
+            width: 60%;
+        }
+        .parallax-text8 {
+            position: absolute;
+            font-weight: bold;
+            font-size: 25px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            Top: 46%;
+            Left: 45%;
+            text-align: left;
+            color: #fff;
+            width: 60%;
+        }
+        .parallax-text6{
+            position: absolute;
+            font-weight:bold;
+            font-size:25px;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            Top : 52%;
+            Left : 37%;
+            text-align: left;
+            color: #fff;
+            width : 70%;
+        }
+        .button-container {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 23px;
+            font-size: 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .button:hover {
+            transform: scale(1.2);
+        }
+        .description1{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            text-align: left;
+            transform: translate(-50%,-50%);
+            color: #ffffff;
+            background-color: #000000;
+            width: 70%;
+        }
+        .description{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            text-align: left;
+            transform: translate(-50%,-50%);
+            color: #fff;
+            width: 70%;
+        }
+        .description2{
+            position:absolute;
+            top: 50%;
+            left: 50%;
+            text-align:left;
+            transform: translate(-50%,-50%);
+            color:#000;
+            width:70%;
+        }
+        .image{
+            position:absolute;
+            Top:19%;
+            Left:42%;
+            width:200px;
+        }
+        figcaption{
+            position:absolute;
+            font-style:italic;
+            font-family:'Times New Roman', Times, serif;
+            Top:59%;
+            Left:44.8%;
+            color:white;
+        }
+        .mirza{
+            position:absolute;
+            Top:17%;
+            Left:42%;
+            width:200px;
+        }
+        .tower3 {
+            position: absolute;
+            Top: 17%;
+            Left: 5%;
+            width: 500px;
+        }
+        .tower{
+            position:absolute;
+            Top:22%;
+            Left:20%;
+            width:400px;
+        }
+        .tower2{
+            position:absolute;
+            Top:25%;
+            Left:65%;
+            width:200px;
+        }
+        .kodali1{
+            position:absolute;
+            Top:17%;
+            Left:22%;
+            width:200px;
+        }
+        .kodali2{
+            position:absolute;
+            Top:17%;
+            Left:50%;
+        }
+        .Tana{
+            position:absolute;
+            Top:20%;
+            Left:16%;
+            width:400px;
+        }
+        .Tana2{
+            position:absolute;
+            Top:20%;
+            Left:52%;
+            width:400px;
+        }      
+        .dokhma{
+            position:absolute;
+            Top:18%;
+            Left:37%;
+            width:300px;
+        } 
+        .silence{
+            position:relative;
+            top:5%;
+            left:-10%;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <ul class="navbar" id="navbar">
+            <li class="silence">Heritage of Bengaluru | The Parsee Tower of Silence</li>
+            <li><button onclick="scrollToDivision(2)">Overview</button></li>
+            <li><button onclick="scrollToDivision(3)">History</button></li>
+            <li><button onclick="scrollToDivision(15)">Culture</button></li>
+            <li><button onclick="scrollToDivision(26)">Challenges</button></li>
+            <li><button onclick="scrollToDivision(27)">Sources & Credits</button></li>
+        </ul>
+    </header>
+
+    <div class="parallax" style="background-image: url(img_20160804_183705.webp);">
+        <div class="parallax-text">
+            <p class="description">
+                Does this look familiar?<br>You must have caught a glimpse of this on Airport Road and perhaps even wondered what it was...
+                <br>Let us partake in an adventure to discover the history, culture and significance of what lies behind these mysterious gates.
+            </p>
+        </div>
+    </div>
+
+    <div class="parallax" style="background-image: url('Model.png');">
+        <div class="parallax-heading2">
+            <h2>Overview</h2>
+        </div>
+        <div class="parallax-text2">
+            <p class="description">
+                The Parsi Tower of Silence located on Bellary Road, Hebbal, Bengaluru is the final resting place of members of a religion known as Zoroastrianism.
+                The site consists of a short cylindrical tower also known as &#39;Dokhma&#39; or &#39;Doongerwadi&#39; where the deceased bodies are left to be exposed to natural elements such as sunlight, vultures and microbial activity.
+            </p>
+        </div>
+    </div>
+
+    <div class="parallax" style="background-image: url('black.webp');">
+        <div class="parallax-heading2">
+            <center><h2>History</h2></center>
+        </div>
+        <img class="image" src="clip_image023.jpg">
+        <figcaption>Image taken in 1940</figcaption>
+        <div class="parallax-text3">
+            <p class="description">
+                So what is it about the Tower of Silence in Bengaluru that makes it worthy of being called heritage?
+                It has a rich history associated with it. Constructed in the year 1940, It was the first structure to come up in Hebbal, then a village to the North of Bengaluru.
+            </p>
+        </div>
+    </div>
+
+    <div class="parallax" style="background-image: url('Palace.png');">
+        <div class="parallax-heading2">
+            <h2>History</h2>
+        </div>
+        <div class="parallax-text4">
+            <p class="description">The salubrious climate of Bengaluru attracted many Parsees to come and settle here from Bombay. Their population in the city at the beginning of the 20th Century was about one or two dozen, which steadily rose to 300 in 1937.</p>
+        </div>
+    </div>
+
+    <div class="parallax" style="background-image: url('Bangalore Agiary.jpg');">
+        <div class="parallax-heading2">
+            <h2>History</h2>
+        </div>
+        <div class="parallax-text5">
+            <p class="description">
+                To facilitate the needs of the rising population, an Agiary (Fire temple) which is the designated place of worship for Zoroastrians was constructed in 1924, very close to the present Shivajinagar Bus Station.
+            </p>
+        </div>
+    </div>
+
+    <div class="parallax" style="background-image: url('Painting.png');">
+        <div class="parallax-text5">
+            <p class="description">
+                But, several immigrants were hesitant to stay on in Bangalore, as there<br>was no facility for the disposal of the dead in the Zoroastrian way by use<br>of Dokhma. This prompted the Anjuman(the Parsi committee) to set up a body led by Seth Dinshaw Cawasji in 1937 to erect a Tower of Silence in Bangalore.
+            </p>
+        </div>
+    </div>
+
+    <div class="parallax" style="background-image: url('bangalore old map.png');">
+        <div class="parallax-heading2">
+            <h2>History</h2>
+        </div>
+        <div class="parallax-text5">
+            <p class="description">
+                In 1938, the city of Bangalore had expanded up to Mehkri Circle in the north, Lalbagh in the west, City Market in the south and The National Dairy Institute in the east. Farmers occupied most of the vacant land. The Dokhma Committee Purchased 14.5 acres for Rs.6000 from seven farmers by negotiating with them through a Legal Advisor, Mr. D&#39;Souza.
+            </p>
+        </div>
+    </div>
+
+    <div class="parallax" style="background-image: url('black.webp');">
+        <div class="parallax-heading2">
+            <h2>History</h2>
+        </div>
+        <img class="mirza" src="Mirza Ismail.webp">
+        <div class="parallax-text3">
+            <p class="description">
+                Next, On the 23rd of November 1938 in his office at &#39;Carlton House&#39; Mirza Ismail, the then Dewan of Mysore was approached for permission to construct the Tower of Silence. The Dewan granted permission on 10th January 1939 along with an offer to build the Dokhma on behalf of the Government with only one condition that the Dokhma be built 75 feet away from Bellary road.
+            </p>
+        </div>
+    </div>
+
+    <div class="parallax" style="background-image: url('paper.jpg');">
+        <div class="parallax-heading2">
+            <h2>History</h2>
+        </div>
+        <img class="kodali1" src="clip_image006.jpg">
+        <img class="kodali2" src="clip_image009.jpg">
+        <div class="parallax-text3">
+            <p class="description">
+                The Dokhma Committee fixed 10th March 1939 to start the construction work on the Dokhma with a &#39;Kodali Marvani Kriya&#39;. Kodali Marvani Kriya is a Zoroastrian ritual of marking the land where the Tower is to be built.
+            </p>
+        </div>
+    </div>
+
+    <div class="parallax" style="background-image: url('brick.jpg');">
+        <div class="parallax-heading2">
+            <h2>History</h2>
+        </div>
+        <img class="Tana" src="clip_image011.jpg">
+        <img class="Tana2" src="img7.jpg">
+        <div class="parallax-text3">
+            <p class="description">
+                After the marking of the land, The &#39;Tana Purvani Kriya&#39; Ceremony was carried out on 9th April 1939. This Ceremony is done to inaugurate the foundation of the construction of the tower.
+                Exactly 301 Iron Nails are placed on the circumference of the foundation and long pieces of cotton thread are tied around them in a peculiar fashion. The ceremony took three hours to complete and was witnessed by a thousand people, many of whom had arrived from Bombay.
+            </p>
+        </div>
+    </div>
+
+    <div class="parallax" style="background-image: url('wood.jpg');">
+        <div class="parallax-heading2">
+            <h2>History</h2>
+        </div>
+        <img class="dokhma" src="clip_image019.jpg">
+        <div class="parallax-text3">
+            <p class="description">
+                The Structure of the Tower was designed by Taraporewalla & Co., Architects and the Person assigned to handle the construction was Mr. Nadershah Dorabji Guzdar who stayed on a farmhouse on the same land for the duration of the construction.
+                It took exactly one year for the construction of the tower of silence.
+            </p>
+        </div>
+    </div>
+
+    <div class="parallax" style="background-image: url('Cantonment.png');">
+        <div class="parallax-heading2">
+            <h2>History</h2>
+        </div>
+        <!--<img class = "mirza" src = "Mirza Ismail.webp"-->
+        <div class="parallax-text5">
+            <p class="description">
+                In 1939 there was no public transport in Bengaluru - No BMTC buses, No Autos, No Taxis. It was the Horse and Carriage age, so how were the construction materials transported to the Tower of Silence being built in the Outskirts?
+            </p>
+        </div>
+    </div>
+
+    <div class="parallax" style="background-image: url('KRMarket.png');">
+        <div class="parallax-heading2">
+            <h2>History</h2>
+        </div>
+        <!--<img class = "mirza" src = "Mirza Ismail.webp"-->
+        <div class="parallax-text5">
+            <p class="description">
+                Mr. Guzdar purchased a second hand motorcar from the manager of the Mysore Bank for Rs.450 to make trips to and from the city inorder to purchase small building items.
+                Bullock carts were used to transport cement bags from the Yelahanka Railway station and
+                Granite blocks used for the construction of the Tower from Doddaballapur.
+                150 - 200 labourers were expedited to complete the work.
+            </p>
+        </div>
+    </div>
+
+    <div class="parallax" style="background-image: url('brick2.png');">
+        <div class="parallax-heading2">
+            <h2>History</h2>
+        </div>
+        <img class="tower" src="clip_image027.jpg">
+        <img class="tower2" src="ezgif-3-bb24fcfdc0.jpg">
+        <div class="parallax-text3">
+            <p class="description">
+                The Tower of Silence in Bangalore was consecrated on March 23, 1940, with a ceremony attended by almost a thousand people. Following the ceremony, attendees collectively donated Rs.5000.
+                On May 24, 1940, the body of Noshir Doctor, a 25-year-old student at the Indian Institute of Science, who had passed away in a motorcycle accident, became the first to be placed on the Tower of Silence.
+            </p>
+        </div>
+        <div class="button-container">
+            <button class="button" onclick="scrollToDivision(1)">Scroll to the Top</button>
+        </div>
+    </div>
+    <div class="parallax" style="background-image: url('notbangalore.jpg');">
+        <div class="parallax-heading2">
+            <h2>Culture</h2>
+        </div>
+        <div class="parallax-text5">
+            <p class="description">
+                What is the belief,culture and meaning behind this ancient and rare practice. Let us find out!
+            </p>
+        </div>
+    </div>
+    <div class="parallax" style="background-image: url('yazd.jpg');">
+        <div class="parallax-heading2">
+            <h2>Culture</h2>
+        </div>
+        <div class="parallax-text5">
+            <p class="description">
+                This Ritual Exposure of the dead is 3000 years old, and the first<br />recorded towers were constructed in the 9th Century AD.<br />Once a widespread practice in what is present day Iran, today this custom is restricted to only a few thousand Parsis in India.
+            </p>
+        </div>
+    </div>
+    <div class="parallax" style="background-image: url('faravahar.jpg');">
+        <div class="parallax-heading2">
+            <h2>Culture</h2>
+        </div>
+        <div class="parallax-text5">
+            <p class="description">
+                The Rationale behind the Ritual Exposure of the Dead in a Tower of Silence is to avoid contact with Earth, Water or Fire, all three of which are considered sacred. Vultures are seen as being instrumental in seperating the impure part of the body from the soul that is considered pure, to enable its journey onwards.
+            </p>
+        </div>
+    </div>
+    <div class="parallax" style="background-image: url('oldhome.jpg');">
+        <div class="parallax-heading2">
+            <h2>Culture</h2>
+        </div>
+        <div class="parallax-text5">
+            <p class="description">
+                When a Person passes away the body is moved to a special building near the Tower of Silence known as a Mortuary. It has a hall and bathing room attached to it.
+            </p>
+        </div>
+    </div>
+    <div class="parallax" style="background-image: url('Massage.jpg');">
+        <div class="parallax-heading2">
+            <h2>Culture</h2>
+        </div>
+        <div class="parallax-text5">
+            <p class="description">
+                In the bathing room, inside the Mortuary, the body is washed using white bull urine called Gomez and then water by close family members then dressed in ritually cleansed old white clothes along with a prayer cap.
+            </p>
+        </div>
+    </div>
+    <div class="parallax" style="background-image: url('whisper.jpg');">
+        <div class="parallax-heading2">
+            <h2>Culture</h2>
+        </div>
+        <div class="parallax-text5">
+            <p class="description">
+                The Body is then taken to the hall and placed on a temporary bed or sheet. Family members are free to mourn and pay their final respects etc. Close relatives whisper prayers into the ear of the body.
+            </p>
+        </div>
+    </div>
+    <div class="parallax" style="background-image: url('NasaSalar.jpg');">
+        <div class="parallax-heading2">
+            <h2>Culture</h2>
+        </div>
+        <div class="parallax-text5">
+            <p class="description">
+                Then two Special Priests known as Nasa Salars arrive. Once they arrive no member can touch the body anymore. The Nasa Salars have ritually cleansed themselves and wear white clothes. They also wear a white mask.
+            </p>
+        </div>
+    </div>
+    <div class="parallax" style="background-image: url('Sagdid.jpg');">
+        <div class="parallax-heading2">
+            <h2>Culture</h2>
+        </div>
+        <div class="parallax-text5">
+            <p class="description">
+                They place the body on a raised platform and begin the prayers. Midway in the prayers a dog is brought near the body, If the dog stares at the body, the person is considered to be alive, if the dog doesn't care the person is considered to have truly passed away. This ritual is known as Sagdid.
+            </p>
+        </div>
+    </div>
+    <div class="parallax" style="background-image: url('10.jpg');">
+        <div class="parallax-heading2">
+            <h2>Culture</h2>
+        </div>
+        <div class="parallax-text5">
+            <p class="description">
+                When the prayers end, the Nasa Salars get a stretcher and the body is fastened on to it.
+                They then walk towards the tower with the family walking behind in the procession.
+                When the Nasa Salars enter the tower the family leaves and enters a building called a Sagri that has a window towards the tower,they bid their farewells and say final prayers there.
+            </p>
+        </div>
+    </div>
+    <div class="parallax" style="background-image: url('TowerPlace.jpg');">
+        <div class="parallax-heading2">
+            <h2>Culture</h2>
+        </div>
+        <div class="parallax-text5">
+            <p class="description">
+                The Nasa Salars place the body on the tower, while the Family<br /> members bid farewell in the Sagri. The clothes are removed from the deceased&#39;s body and when they come out of the tower the clothes are dumped into a special pit with acid.
+                When the Nasa Salars are seen coming out after placing the body everybody leaves for home.
+            </p>
+        </div>
+    </div>
+    <div class="parallax" style="background-image: url('black.webp');">
+        <div class="parallax-heading2">
+            <h2>Culture</h2>
+        </div>
+        <img class="tower3" src="Plan.webp" />
+        <div class="parallax-text6">
+            <p class="description">
+                The Design of the Tower is of a particular fashion. Inside the Tower at an elevation, stone caskets called &#39;Pavis&#39; are present in three concentric circles.<br /><br />The deceased bodies are placed in here to be exposed to nature and vultures. The outer most Circle is reserved for men, the middle for women and the innermost for children.<br /><br />When nature reduces the bodies to bones, they are pushed to the hollow cavity at the very center of the tower known as the &#39;Well&#39;. The bones collect in the &#39;well&#39; where they are further disintegrated with external agents.<br /><br />The &#39;Well&#39; is surrounded on four sides by Channels that lead to four smaller underground wells.<br /><br />This is the final destination of the remains. Storage in wells ensure that the remains do not contaminate the spiritual purity of the soil.
+            </p>
+        </div>
+
+        <div class="button-container">
+            <button class="button" onclick="scrollToDivision(1)">Scroll to the Top</button>
+        </div>
+    </div>
+    <div class="parallax" style="background-image: url('vulture.jpg');">
+        <div class="parallax-heading2">
+            <h2>Challenges</h2>
+        </div>
+        <div class="parallax-text7">
+            <p class="description">
+                The Parsee Tower of Silence in Bengaluru today is faced with a few critical challenges that threaten the continued existence of this rare and ancient practice.<br /><br />The most significant of these is the disappearance of vultures. Since the 1980s, India's vulture population has declined by nearly 99% thanks to an antibiotic drug administered to cows called diclofenac.<br /><br />As a result Vultures are no longer available to play their part in the Zoroastrian Funeral Ritual. Bodies that were reduced in minutes now take months to decompose.
+            </p>
+        </div>
+        <div class="parallax-text8">
+            <p class="description">
+                The Dokhma was constructed in 1940 in a region that was well beyond city limits for its privacy and seclusion.<br /><br />Today due to the rapid growth of the city the Tower of Silence directly neighbours high rise apartments and offices along with noise from excessive traffic on Airport Road.<br /><br />This according to many parsis has violated the sanctity and serenity of the place. Green screens had to be erected to shield the view of the tower from the neighbouring buildings.<br /><br />Many Parsis for these reasons are now resorting to either bury or cremate their dead.
+            </p>
+        </div>
+        <div class="button-container">
+            <button class="button" onclick="scrollToDivision(1)">Scroll to the Top</button>
+        </div>
+
+    </div>
+    <div class="parallax" style="background-image: url('canvas.jpeg');">
+        <div class="parallax-heading2">
+            <h2>Sources & Credits</h2>
+        </div>
+        <div class="parallax-text9">
+            <p class="description">
+                Done By:<br /><br />
+                Aryaman Datta - 1AT20CS011<br /><br />
+                Abdul Rab - 1AT20CS002<br /><br />
+                Joel Pinto - 1AT20CS122<br /><br />
+                Web Technology and Applications Project<br /><br />
+                Atria Institute of Technology, Bengaluru<br /><br />
+                2023
+            </p>
+        </div>
+
+        <div class="parallax-text8">
+            <p class="description">
+                <a href="https://www.bpza.org/">The Bangalore Parsee Zoroastrian Anjuman</a><br /><br />
+                <a href="http://www.heritageinstitute.com/zoroastrianism/death/page2.htm">Heritage Institute</a><br /><br />
+                The Bangalore Parsis - Dasturji Nadirshah P. Unvalla (Book)<br /><br />
+                Google Images
+            </p>
+        </div>
+        <div class="button-container">
+            <button class="button" onclick="scrollToDivision(1)">Scroll to the Top</button>
+        </div>
+
+    </div>
+
+    <script>
+        window.addEventListener('scroll', function () {
+            const headings = document.querySelectorAll('.parallax-heading');
+            headings.forEach(heading => {
+                const bounding = heading.getBoundingClientRect();
+                if (bounding.top >= 0 && bounding.bottom <= window.innerHeight) {
+                    heading.style.opacity = '1';
+                } else {
+                    heading.style.opacity = '0';
+                }
+            });
+        });
+
+        function scrollToDivision(divisionIndex) {
+            const divisions = document.querySelectorAll('.parallax');
+            const division = divisions[divisionIndex - 1];
+            const divisionTop = division.offsetTop;
+            window.scrollTo({
+                top: divisionTop,
+                behavior: 'smooth'
+            });
+        }       
+    </script>
+</body>
+</html>
