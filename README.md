@@ -1,11 +1,11 @@
 # Parallax-Scrolling-Website
 A Website created using Parallax Scrolling with a Signup/Login page attached that provides factual information on 'The Parsee Tower of Silence'  in an aesthetic and Comprehensible manner. Web Technologies used are HTML, CSS, JavaScript, PHP and a backend Database.
 A virtual Server is Created using Xampp to run the Server Side php scripts to validate the user details.
-Software Requirements :
+# Software Requirements :
 1) Xampp - https://sourceforge.net/projects/xampp/
 2) Internet Browser
 
-Download Procedure :
+# Download Procedure :
 1) Install Xampp from the aforementioned link.
 2) Follow the installation wizard for Xampp
 3) Next, download the 'Project' Folder and extract it.
