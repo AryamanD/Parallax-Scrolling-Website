@@ -24,6 +24,6 @@ Download Procedure :
 Note: The email must end with '@gmail.com' and the Password must have atleast 8 characters with atleast One Uppercase, One Lowercase, One digit and One Special Character.
 Once the signup is complete reenter the same details in the login section to enter the Parallax Scroll Page.
 
-Purpose of the Website
+# Purpose of the Website
 The website is intended to shed light on a rare and ancient practice for the disposal of the dead that is being kept alive only by a few thousand people.
 This Practice is carried out by members of a Religion known as Zoroastrianism. It includes the ritual exposure of deceased people to natural elements such as vultures, Microbial activity and Sunlight.
